@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, json, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask.helpers import send_from_directory
-import os
+# import os
 
 app = Flask(__name__, static_url_path='', static_folder='frontend/build')
 # CORS(app) #comment this on deployment
@@ -14,12 +14,12 @@ def serve(path):
 # api.add_resource(HelloApiHandler, '/flask/hello')
 
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://pxjvdkbmidsdcg:68047a03bdfcd39f0a9d0a5a5cf70048b6ba129974a5e072a2a760b2d956a497@ec2-44-198-80-194.compute-1.amazonaws.com:5432/d1n7a2n9qi5ipu"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://pxjvdkbmidsdcg:68047a03bdfcd39f0a9d0a5a5cf70048b6ba129974a5e072a2a760b2d956a497@ec2-44-198-80-194.compute-1.amazonaws.com:5432/d1n7a2n9qi5ipu"
 db = SQLAlchemy(app)
 
-uri = os.getenv("SQLALCHEMY_DATABASE_URI")  # or other relevant config var
-if uri.startswith("postgres://"):
-    uri = uri.replace("postgres://", "postgresql://", 1)
+# uri = os.getenv("SQLALCHEMY_DATABASE_URI")  # or other relevant config var
+# if uri.startswith("postgres://"):
+#     uri = uri.replace("postgres://", "postgresql://", 1)
 
 class User(db.Model):
     __tablename__ = "user"

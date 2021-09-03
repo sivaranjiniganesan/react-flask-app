@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask.helpers import send_from_directory
 
 app = Flask(__name__, static_url_path='', static_folder='frontend/build')
-CORS(app) #comment this on deployment
+# CORS(app) #comment this on deployment
 api = Api(app)
 
 @app.route("/", defaults={'path':''})

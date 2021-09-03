@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, json, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask.helpers import send_from_directory
+import os
 
 app = Flask(__name__, static_url_path='', static_folder='frontend/build')
 # CORS(app) #comment this on deployment

@@ -16,6 +16,9 @@ def serve(path):
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://pxjvdkbmidsdcg:68047a03bdfcd39f0a9d0a5a5cf70048b6ba129974a5e072a2a760b2d956a497@ec2-44-198-80-194.compute-1.amazonaws.com:5432/d1n7a2n9qi5ipu"
 db = SQLAlchemy(app)
 
+uri = os.getenv("SQLALCHEMY_DATABASE_URI")  # or other relevant config var
+if uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
 
 class User(db.Model):
     __tablename__ = "user"

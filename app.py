@@ -4,7 +4,7 @@ from flask.helpers import send_from_directory
 
 app = Flask(__name__, static_url_path='', static_folder='frontend/build')
 # CORS(app) #comment this on deployment
-api = Api(app)
+# api = Api(app)
 
 @app.route("/", defaults={'path':''})
 def serve(path):
@@ -28,7 +28,7 @@ class User(db.Model):
         self.name = name
         self.email = email
 
-@app.route("/", methods = ["GET", "POST"])
+@app.route("/create", methods = ["GET", "POST"])
 def index():
     if request.method == 'POST':
         data = request.form
